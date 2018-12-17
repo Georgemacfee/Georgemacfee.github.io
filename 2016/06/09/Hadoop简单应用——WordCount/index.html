@@ -6,17 +6,24 @@
     
 
     
-    <title>归档: 2018 | 白熊大脚趾的书房</title>
+    <title>Hadoop简单应用——WordCount | 白熊大脚趾的书房</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="白熊大脚趾的书房">
-<meta property="og:url" content="https://georgemacfee.github.io/archives/2018/index.html">
+        <meta name="keywords" content="Hadoop">
+    
+    <meta name="description" content="书接上回。上次，我讲了一下如何安装、配置Hadoop。这次，我来讲一下如何运行Hadoop自带的示例——WordCount。">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop简单应用——WordCount">
+<meta property="og:url" content="https://georgemacfee.github.io/2016/06/09/Hadoop简单应用——WordCount/index.html">
 <meta property="og:site_name" content="白熊大脚趾的书房">
+<meta property="og:description" content="书接上回。上次，我讲了一下如何安装、配置Hadoop。这次，我来讲一下如何运行Hadoop自带的示例——WordCount。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-12-11T06:39:23.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="白熊大脚趾的书房">
+<meta name="twitter:title" content="Hadoop简单应用——WordCount">
+<meta name="twitter:description" content="书接上回。上次，我讲了一下如何安装、配置Hadoop。这次，我来讲一下如何运行Hadoop自带的示例——WordCount。">
     
 
     
@@ -125,74 +132,132 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档: 2018
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Hadoop简单应用——WordCount" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/12/13/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://georgemacfee.github.io/2018/12/13/hello-world/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-12-14T00:31:49.285Z" itemprop="datePublished">2018-12-13</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/12/13/hello-world/">Hello World</a>
+        Hadoop简单应用——WordCount
         </h1>
     
 
-        <p class="article-excerpt">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2016/06/09/Hadoop简单应用——WordCount/" class="article-date">
+            <time datetime="2016-06-10T01:24:24.000Z" itemprop="datePublished">2016-06-09</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Hadoop/">Hadoop</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>书接上回。上次，我讲了一下如何安装、配置Hadoop。这次，我来讲一下如何运行Hadoop自带的示例——WordCount。<br><a id="more"></a></p>
+<h2 id="一、在根目录下建立文件夹"><a href="#一、在根目录下建立文件夹" class="headerlink" title="一、在根目录下建立文件夹"></a>一、在根目录下建立文件夹</h2><p>使用  <code>mkdir ~/wc</code> 命令在根目录下建立目录“wc”</p>
+<h2 id="二、创建文本文件"><a href="#二、创建文本文件" class="headerlink" title="二、创建文本文件"></a>二、创建文本文件</h2><p>使用<br><code>echo &quot;hello hadoop&quot; &gt; wc1.txt</code><br><code>echo &quot;hello world&quot; &gt; wc2.txt</code><br><code>echo &quot;hello hadoop hive&quot; &gt; wc3.txt</code><br>创建三个文本文件，并将“hello hadoop”，“hello world”，“hello hadoop hive”这三句话分别写入三个文件中</p>
+<h2 id="三、在HDFS上创建输入文件夹目录input"><a href="#三、在HDFS上创建输入文件夹目录input" class="headerlink" title="三、在HDFS上创建输入文件夹目录input"></a>三、在HDFS上创建输入文件夹目录input</h2><p>在Hadoop目录下，使用 <code>bin/hadoop fs -mkdir/input</code> 来在HDFS创建一个存放刚才创建的文本文件的文件夹，并使用 <code>bin/hadoop fs -put ~/wc/wc*.txt /input</code> 来将三个文本文件放到HDFS上。</p>
+<h2 id="四、运行WordCount"><a href="#四、运行WordCount" class="headerlink" title="四、运行WordCount"></a>四、运行WordCount</h2><p>使用<code>bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.4.jar wordcount /input/ /output/wordcount1</code>来运行示例程序，并将结果存储在HDFS上的output/wordcount1文件夹里。</p>
+<h2 id="五、查看结果"><a href="#五、查看结果" class="headerlink" title="五、查看结果"></a>五、查看结果</h2><p>使用<code>bin/hdfs dfs -cat /output/wordcount1/*</code>来查看运行结果，结果如下<br>hadoop    2<br>hello    3<br>hive    1<br>world    1</p>
+<p>到这里，我们就完成了示例程序的运行。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://georgemacfee.github.io/2016/06/09/Hadoop简单应用——WordCount/" data-id="cjprkq0b70005bovmy3vqdzpy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-        </div>
-    
 
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -254,6 +319,29 @@ Quick
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/06/12/Hadoop简单应用——航班信息分析/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Hadoop简单应用——航班信息分析
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2016/06/01/Hadoop安装及配置/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Hadoop安装及配置</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -462,11 +550,13 @@ Quick
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'https://georgemacfee.github.io/2016/06/09/Hadoop简单应用——WordCount/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

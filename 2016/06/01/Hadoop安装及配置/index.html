@@ -6,17 +6,24 @@
     
 
     
-    <title>归档: 2018 | 白熊大脚趾的书房</title>
+    <title>Hadoop安装及配置 | 白熊大脚趾的书房</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="白熊大脚趾的书房">
-<meta property="og:url" content="https://georgemacfee.github.io/archives/2018/index.html">
+        <meta name="keywords" content="Hadoop">
+    
+    <meta name="description" content="这学期计算机体系结构课的老师为我们安排了有关Hadoop的实验。想要使用Hadoop，首先要配置Hadoop。在此，我把Hadoop安装及配置的过程写下，为自己留个底。">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop安装及配置">
+<meta property="og:url" content="https://georgemacfee.github.io/2016/06/01/Hadoop安装及配置/index.html">
 <meta property="og:site_name" content="白熊大脚趾的书房">
+<meta property="og:description" content="这学期计算机体系结构课的老师为我们安排了有关Hadoop的实验。想要使用Hadoop，首先要配置Hadoop。在此，我把Hadoop安装及配置的过程写下，为自己留个底。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-12-11T03:50:11.757Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="白熊大脚趾的书房">
+<meta name="twitter:title" content="Hadoop安装及配置">
+<meta name="twitter:description" content="这学期计算机体系结构课的老师为我们安排了有关Hadoop的实验。想要使用Hadoop，首先要配置Hadoop。在此，我把Hadoop安装及配置的过程写下，为自己留个底。">
     
 
     
@@ -125,74 +132,142 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档: 2018
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Hadoop安装及配置" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/12/13/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://georgemacfee.github.io/2018/12/13/hello-world/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-12-14T00:31:49.285Z" itemprop="datePublished">2018-12-13</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/12/13/hello-world/">Hello World</a>
+        Hadoop安装及配置
         </h1>
     
 
-        <p class="article-excerpt">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2016/06/01/Hadoop安装及配置/" class="article-date">
+            <time datetime="2016-06-02T02:13:03.000Z" itemprop="datePublished">2016-06-01</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Hadoop/">Hadoop</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>这学期计算机体系结构课的老师为我们安排了有关Hadoop的实验。想要使用Hadoop，首先要配置Hadoop。在此，我把Hadoop安装及配置的过程写下，为自己留个底。<br><a id="more"></a></p>
+<h2 id="一、环境介绍"><a href="#一、环境介绍" class="headerlink" title="一、环境介绍"></a>一、环境介绍</h2><p>我是用虚拟机装的Hadoop，虚拟机的系统是Fedro20，JDK版本是1.8.0_92</p>
+<h2 id="二、Hadoop下载"><a href="#二、Hadoop下载" class="headerlink" title="二、Hadoop下载"></a>二、Hadoop下载</h2><p>我是从Hadoop的官网下载的Hadoop，网址是：<a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">http://hadoop.apache.org/releases.html</a></p>
+<h2 id="三、SSH免密配置"><a href="#三、SSH免密配置" class="headerlink" title="三、SSH免密配置"></a>三、SSH免密配置</h2><p>Hadoop是分布式的，各个主机之间通过SSH进行通信，就需要对SSH进行配置。我的系统自带了SSH，有的系统（如：Ubuntu）没有自带SSH，需要自行安装。因为我现在做的只是伪分布式，所以SSH的配置可能跟真实情况有所不同，这个以后再补充。</p>
+<h4 id="1、生成密钥对"><a href="#1、生成密钥对" class="headerlink" title="1、生成密钥对"></a>1、生成密钥对</h4><p>[root@localhost ~]# ssh-keygen -t rsa</p>
+<h4 id="2、进入-ssh目录，复制密钥"><a href="#2、进入-ssh目录，复制密钥" class="headerlink" title="2、进入.ssh目录，复制密钥"></a>2、进入.ssh目录，复制密钥</h4><p>[root@localhost ~]# cd .ssh<br>[root@localhost .ssh]# cp id_rsa.pub authorized_keys</p>
+<h4 id="3、测试"><a href="#3、测试" class="headerlink" title="3、测试"></a>3、测试</h4><p>[root@localhost ~]# ssh localhost</p>
+<h2 id="四、安装Hadoop"><a href="#四、安装Hadoop" class="headerlink" title="四、安装Hadoop"></a>四、安装Hadoop</h2><p>这个部分主要的工作就是解压压缩包和修改环境变量</p>
+<h4 id="1、解压"><a href="#1、解压" class="headerlink" title="1、解压"></a>1、解压</h4><p>[root@localhost ~]# tar zxvf /home/george/hadoop/hadoop-2.6.4.tar.gz -C /usr</p>
+<h4 id="2、修改Hadoop的环境变量"><a href="#2、修改Hadoop的环境变量" class="headerlink" title="2、修改Hadoop的环境变量"></a>2、修改Hadoop的环境变量</h4><p>[root@localhost hadoop]# vi hadoop-env.sh<br>在hadoop-env.sh文件中加入<br>export JAVA_HOME=/usr/jdk1.8.0_92</p>
+<h4 id="3、修改系统的环境变量"><a href="#3、修改系统的环境变量" class="headerlink" title="3、修改系统的环境变量"></a>3、修改系统的环境变量</h4><p>[root@localhost hadoop]# vi /etc/profile<br>在文件尾部加入<br><code>export HADOOP_HOME=/usr/hadoop-2.6.4</code><br><code>export PATH=$PATH:$HADOOP_HOME/bin</code><br>保存之后，执行 <code>souce /etc/profile</code> 命令，使配置文件生效。</p>
+<h2 id="五、Hadoop配置"><a href="#五、Hadoop配置" class="headerlink" title="五、Hadoop配置"></a>五、Hadoop配置</h2><h4 id="1、修改-etc-hadoop-core-site-xml文件"><a href="#1、修改-etc-hadoop-core-site-xml文件" class="headerlink" title="1、修改/etc/hadoop/core-site.xml文件"></a>1、修改/etc/hadoop/core-site.xml文件</h4><p>添加以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.default.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、修改-etc-hadoop-hdfs-site-xml文件"><a href="#2、修改-etc-hadoop-hdfs-site-xml文件" class="headerlink" title="2、修改/etc/hadoop/hdfs-site.xml文件"></a>2、修改/etc/hadoop/hdfs-site.xml文件</h4><p>添加以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、修改-etc-hadoop-mapred-site-xml文件"><a href="#3、修改-etc-hadoop-mapred-site-xml文件" class="headerlink" title="3、修改/etc/hadoop/mapred-site.xml文件"></a>3、修改/etc/hadoop/mapred-site.xml文件</h4><p><strong>这里要注意一点，新的Hadoop版本并没有这个文件，需要将mapred-site.xml.template复制一份，并命名为mapred-site.xml</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapred.job.tracker&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;localhost:9001&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="六、运行Hadoop"><a href="#六、运行Hadoop" class="headerlink" title="六、运行Hadoop"></a>六、运行Hadoop</h2><p>运行之前，需要执行命令 <code>hadoop namenode -format</code>，对系统文件进行格式化。之后，执行<code>/sbin/start-all.sh</code>，启动服务。启动服务后，执行 <code>jps</code> 命令，查看进程情况，若显示内容如下所示，则启动成功<br>    [root@localhost sbin]# jps<br>    4561 Jps<br>    3825 SecondaryNameNode<br>    4066 ResourceManager<br>    4163 NodeManager<br>    3512 DataNode<br>    3359 NameNode</p>
+<h2 id="七、停止Hadoop"><a href="#七、停止Hadoop" class="headerlink" title="七、停止Hadoop"></a>七、停止Hadoop</h2><p>执行<code>/sbin/stop-all.sh</code>，停止服务</p>
+<p>以上就是，Hadoop安装、配置及运行的详细过程，希望能对其他人有所帮助。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://georgemacfee.github.io/2016/06/01/Hadoop安装及配置/" data-id="cjprkq0b50004bovm575ktw1x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-        </div>
-    
 
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -254,6 +329,29 @@ Quick
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/06/09/Hadoop简单应用——WordCount/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Hadoop简单应用——WordCount
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2015/12/02/JAVA学习笔记（一）-关于对象-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">JAVA学习笔记（一）-关于对象(1)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -462,11 +560,13 @@ Quick
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'https://georgemacfee.github.io/2016/06/01/Hadoop安装及配置/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
